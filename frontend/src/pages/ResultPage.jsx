@@ -32,25 +32,25 @@ const ResultPage = () => {
   const downloadPDF = async () => {
     if (!resultRef.current) return;
     const canvas = await html2canvas(resultRef.current, {
-        scale: 3, // Higher scale for better quality on A5
-        backgroundColor: '#ffffff',
-        useCORS: true // for logos
+      scale: 3, // Higher scale for better quality on A5
+      backgroundColor: '#ffffff',
+      useCORS: true // for logos
     });
     const imgData = canvas.toDataURL('image/png');
     const pdf = new jsPDF('p', 'mm', 'a5');
     const pdfWidth = pdf.internal.pageSize.getWidth();
     const pdfHeight = pdf.internal.pageSize.getHeight();
-    
+
     // Calculate aspect ratio to fit on A5
     const imgProps = pdf.getImageProperties(imgData);
     const ratio = Math.min(pdfWidth / imgProps.width, pdfHeight / imgProps.height);
     const finalWidth = imgProps.width * ratio;
     const finalHeight = imgProps.height * ratio;
-    
+
     // Center it
     const x = (pdfWidth - finalWidth) / 2;
     const y = 10;
-    
+
     pdf.addImage(imgData, 'PNG', x, y, finalWidth, finalHeight);
     pdf.save(`Result_${result.reg_no}.pdf`);
   };
@@ -58,9 +58,9 @@ const ResultPage = () => {
   return (
     <div className="page-wrapper">
       <Navbar />
-      
+
       <main className="result-container container">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           className="search-card glass"
@@ -72,19 +72,19 @@ const ResultPage = () => {
 
           <AnimatePresence mode="wait">
             {!result ? (
-              <motion.form 
+              <motion.form
                 key="search-form"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                onSubmit={handleSearch} 
+                onSubmit={handleSearch}
                 className="search-form"
               >
                 <div className="input-group">
                   <label>Registration Number</label>
-                  <input 
-                    type="text" 
-                    placeholder="e.g. CAMP001" 
+                  <input
+                    type="text"
+                    placeholder="e.g. CAMP001"
                     value={regNo}
                     onChange={(e) => setRegNo(e.target.value)}
                     required
@@ -92,8 +92,8 @@ const ResultPage = () => {
                 </div>
                 <div className="input-group">
                   <label>Date of Birth</label>
-                  <input 
-                    type="date" 
+                  <input
+                    type="date"
                     value={dob}
                     onChange={(e) => setDob(e.target.value)}
                     required
@@ -104,7 +104,7 @@ const ResultPage = () => {
                 </button>
               </motion.form>
             ) : (
-              <motion.div 
+              <motion.div
                 key="result-display"
                 initial={{ scale: 0.95, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -112,56 +112,56 @@ const ResultPage = () => {
               >
                 {/* This div is what gets captured for PDF */}
                 <div className="result-display-printable" ref={resultRef} style={{ background: 'white', padding: '20px' }}>
-                    <div className="printable-header" style={{ textAlign: 'center', marginBottom: '20px' }}>
-                        <div className="header-logos" style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '10px' }}>
-                            <img src="/static/logo1.jpg" alt="" style={{ height: '50px' }} />
-                            <img src="/static/logo2.png" alt="" style={{ height: '50px' }} />
-                        </div>
-                        <p style={{ color: '#666', fontSize: '1rem', fontWeight: '700', margin: '5px 0 0' }}>OFFICIAL PERFORMANCE RECORD</p>
+                  <div className="printable-header" style={{ textAlign: 'center', marginBottom: '20px' }}>
+                    <div className="header-logos" style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '10px' }}>
+                      <img src="/static/logo1.jpg" alt="" style={{ height: '50px' }} />
+                      <img src="/static/logo2.png" alt="" style={{ height: '50px' }} />
                     </div>
+                    <p style={{ color: '#666', fontSize: '1rem', fontWeight: '700', margin: '5px 0 0' }}>OFFICIAL PERFORMANCE RECORD</p>
+                  </div>
 
-                    <div className={`result-display-card ${result.result.toLowerCase()}`} style={{ border: '2px solid #eee', borderRadius: '15px', padding: '20px', textAlign: 'center' }}>
-                        <div className="result-icon">
-                        {result.result === 'Pass' ? <CheckCircle2 size={50} color="#27ae60" /> : <XCircle size={50} color="#e74c3c" />}
-                        </div>
-                        <div className="student-info" style={{ marginTop: '10px' }}>
-                        <h3 style={{ fontSize: '1.6rem', margin: '0' }}>{result.name}</h3>
-                        <p className="reg-val">Reg No: {result.reg_no}</p>
-                        </div>
-                        <div className="result-badge-pdf" style={{ 
-                            fontSize: '2rem', fontWeight: '900', display: 'inline-block',
-                            padding: '5px 30px', borderRadius: '30px', margin: '15px 0',
-                            backgroundColor: result.result === 'Pass' ? '#d4f8e3' : '#fdeaea',
-                            color: result.result === 'Pass' ? '#27ae60' : '#e74c3c'
-                        }}>
-                            {result.result === 'Pass' ? 'PASSED' : 'NEEDS IMPROVEMENT'}
-                        </div>
-                        <div className="result-notice" style={{ fontSize: '0.85rem', color: '#666', fontStyle: 'italic', maxWidth: '350px', margin: '0 auto', lineHeight: '1.4' }}>
-                        {result.result === 'Pass' ? 
-                            <>
-                                Please contact the office on or before 16-04-2026 for admission procedures. <br />
-                                <span style={{ fontStyle: 'normal', display: 'block', marginTop: '5px' }}>
-                                    അഡ്മിഷൻ നടപടികൾക്കായി 16-04-2026-നോ അതിനുമുമ്പോ ഓഫീസുമായി ബന്ധപ്പെടുക.
-                                </span>
-                            </> : 
-                            "Every expert was once a beginner. Don't let this result define your future—your hard work will eventually pay off!"}
-                        </div>
-                        <div className="print-footer" style={{ marginTop: '30px', borderTop: '1px solid #eee', paddingTop: '10px', fontSize: '0.7rem', color: '#999' }}>
-                            Certificate issued on {new Date().toLocaleDateString()} • Camp Authority
-                        </div>
+                  <div className={`result-display-card ${result.result.toLowerCase()}`} style={{ border: '2px solid #eee', borderRadius: '15px', padding: '20px', textAlign: 'center' }}>
+                    <div className="result-icon">
+                      {result.result === 'Pass' ? <CheckCircle2 size={50} color="#27ae60" /> : <XCircle size={50} color="#e74c3c" />}
                     </div>
+                    <div className="student-info" style={{ marginTop: '10px' }}>
+                      <h3 style={{ fontSize: '1.6rem', margin: '0' }}>{result.name}</h3>
+                      <p className="reg-val">Reg No: {result.reg_no}</p>
+                    </div>
+                    <div className="result-badge-pdf" style={{
+                      fontSize: '2rem', fontWeight: '900', display: 'inline-block',
+                      padding: '5px 30px', borderRadius: '30px', margin: '15px 0',
+                      backgroundColor: result.result === 'Pass' ? '#d4f8e3' : '#fdeaea',
+                      color: result.result === 'Pass' ? '#27ae60' : '#e74c3c'
+                    }}>
+                      {result.result === 'Pass' ? 'PASSED' : 'NEEDS IMPROVEMENT'}
+                    </div>
+                    <div className="result-notice" style={{ fontSize: '0.85rem', color: '#666', fontStyle: 'italic', maxWidth: '350px', margin: '0 auto', lineHeight: '1.4' }}>
+                      {result.result === 'Pass' ?
+                        <>
+                          Please contact the office for admission procedures. <br /> Contact No.: +91 786 786 3313 <br />
+                          <span style={{ fontStyle: 'normal', display: 'block', marginTop: '5px' }}>
+                            അഡ്മിഷൻ നടപടികൾക്കായി ഓഫീസുമായി ബന്ധപ്പെടുക. <br /> ഫോൺ: +91 786 786 3313
+                          </span>
+                        </> :
+                        "Every expert was once a beginner. Don't let this result define your future—your hard work will eventually pay off!"}
+                    </div>
+                    <div className="print-footer" style={{ marginTop: '30px', borderTop: '1px solid #eee', paddingTop: '10px', fontSize: '0.7rem', color: '#999' }}>
+                      Certificate issued on {new Date().toLocaleDateString()} • Camp Authority
+                    </div>
+                  </div>
                 </div>
-                
+
                 <div className="result-actions">
-                    <button onClick={downloadPDF} className="btn-primary">
-                        <Download size={18} /> Download
-                    </button>
-                    <button 
-                        onClick={() => { setResult(null); setRegNo(''); setDob(''); }} 
-                        className="btn-outline-dark"
-                    >
-                        Check Another Result
-                    </button>
+                  <button onClick={downloadPDF} className="btn-primary">
+                    <Download size={18} /> Download
+                  </button>
+                  <button
+                    onClick={() => { setResult(null); setRegNo(''); setDob(''); }}
+                    className="btn-outline-dark"
+                  >
+                    Check Another Result
+                  </button>
                 </div>
               </motion.div>
             )}
