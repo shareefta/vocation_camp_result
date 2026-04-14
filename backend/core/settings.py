@@ -27,7 +27,7 @@ DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 if not ALLOWED_HOSTS or ALLOWED_HOSTS == ['']:
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com']
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com', '.pythonanywhere.com']
 
 # Application definition
 
