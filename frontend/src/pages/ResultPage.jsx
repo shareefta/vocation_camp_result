@@ -136,9 +136,14 @@ const ResultPage = () => {
                         }}>
                             {result.result === 'Pass' ? 'PASSED' : 'NEEDS IMPROVEMENT'}
                         </div>
-                        <div className="result-notice" style={{ fontSize: '0.85rem', color: '#666', fontStyle: 'italic', maxWidth: '300px', margin: '0 auto' }}>
+                        <div className="result-notice" style={{ fontSize: '0.85rem', color: '#666', fontStyle: 'italic', maxWidth: '350px', margin: '0 auto', lineHeight: '1.4' }}>
                         {result.result === 'Pass' ? 
-                            "Please contact the office on or before 16-04-2026 for admission procedures." : 
+                            <>
+                                Please contact the office on or before 16-04-2026 for admission procedures. <br />
+                                <span style={{ fontStyle: 'normal', display: 'block', marginTop: '5px' }}>
+                                    അഡ്മിഷൻ നടപടികൾക്കായി 16-04-2026-നോ അതിനുമുമ്പോ ഓഫീസുമായി ബന്ധപ്പെടുക.
+                                </span>
+                            </> : 
                             "Every expert was once a beginner. Don't let this result define your future—your hard work will eventually pay off!"}
                         </div>
                         <div className="print-footer" style={{ marginTop: '30px', borderTop: '1px solid #eee', paddingTop: '10px', fontSize: '0.7rem', color: '#999' }}>
