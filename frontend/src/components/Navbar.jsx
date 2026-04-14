@@ -13,7 +13,6 @@ const Navbar = () => {
           <Link to="/">
             <img src="/static/logo1.jpg" alt="Logo 1" className="nav-logo" onError={(e) => { e.target.style.display = 'none'; }} />
             <img src="/static/logo2.png" alt="Logo 2" className="nav-logo" onError={(e) => { e.target.style.display = 'none'; }} />
-            <span className="logo-text">CAMP 2026</span>
           </Link>
         </div>
 
@@ -25,7 +24,7 @@ const Navbar = () => {
         {/* Right: Login Button */}
         <div className="navbar-actions">
           <button onClick={() => navigate('/login')} className="btn-login">
-            <LogIn size={18} /> Admin Login
+            <LogIn size={18} /> <span className="login-text">Admin Login</span>
           </button>
         </div>
       </div>
@@ -120,8 +119,8 @@ const Navbar = () => {
         }
         @media (max-width: 768px) {
           .navbar-links { position: static; transform: none; gap: 15px; }
-          .logo-text { display: none; }
-          .btn-login { padding: 8px 12px; font-size: 0.8rem; }
+          .login-text { display: none; }
+          .btn-login { padding: 10px; border-radius: 50%; width: 40px; height: 40px; justify-content: center; }
         }
       `}</style>
     </nav>

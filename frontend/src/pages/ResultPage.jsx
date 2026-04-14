@@ -5,6 +5,7 @@ import { Search, Loader2, CheckCircle2, XCircle, FileText, Download } from 'luci
 import { motion, AnimatePresence } from 'framer-motion';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import Footer from '../components/Footer';
 
 const ResultPage = () => {
   const [regNo, setRegNo] = useState('');
@@ -170,6 +171,8 @@ const ResultPage = () => {
           {error && <div className="message error animate-fade-in"><XCircle size={18} /> {error}</div>}
         </motion.div>
       </main>
+      
+      <Footer />
 
       <style>{`
         .page-wrapper {

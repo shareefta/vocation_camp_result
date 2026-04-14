@@ -3,6 +3,7 @@ import api from '../api';
 import Navbar from '../components/Navbar';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 const LandingPage = () => {
   const [heroes, setHeroes] = useState([]);
@@ -115,6 +116,8 @@ const LandingPage = () => {
         </div>
       </section>
 
+      <Footer />
+
       <style>{`
         .hero-viewport {
           height: calc(100vh - 80px);
@@ -139,6 +142,7 @@ const LandingPage = () => {
           color: white;
           max-width: 900px;
           padding: 0 40px;
+          z-index: 2;
         }
         .hero-content h1 {
           font-size: 5rem;
@@ -177,6 +181,7 @@ const LandingPage = () => {
           transform: translateX(-50%);
           display: flex;
           gap: 12px;
+          z-index: 10;
         }
         .dot {
           width: 12px;
@@ -194,6 +199,34 @@ const LandingPage = () => {
         .welcome-text p { font-size: 1.25rem; color: var(--text-light); margin-bottom: 30px; }
         .camp-features { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
         .camp-features li { font-weight: 600; color: var(--primary); }
+
+        @media (max-width: 768px) {
+          .hero-viewport {
+            height: 60vh;
+            min-height: 400px;
+          }
+          .hero-background {
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+          .hero-content {
+            padding: 20px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+            width: 90%;
+          }
+          .hero-content h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+          }
+          .hero-content p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+          }
+          .welcome-section { padding: 60px 20px; }
+          .welcome-text h2 { font-size: 2rem; }
+        }
 
         @media (max-width: 992px) {
           .welcome-text h2 { font-size: 2.2rem; }
