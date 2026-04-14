@@ -114,8 +114,8 @@ const ResultPage = () => {
                 <div className="result-display-printable" ref={resultRef} style={{ background: 'white', padding: '20px' }}>
                     <div className="printable-header" style={{ textAlign: 'center', marginBottom: '20px' }}>
                         <div className="header-logos" style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '10px' }}>
-                            <img src="/logo1.jpg" alt="" style={{ height: '50px' }} />
-                            <img src="/logo2.png" alt="" style={{ height: '50px' }} />
+                            <img src="/static/logo1.jpg" alt="" style={{ height: '50px' }} />
+                            <img src="/static/logo2.png" alt="" style={{ height: '50px' }} />
                         </div>
                         <p style={{ color: '#666', fontSize: '1rem', fontWeight: '700', margin: '5px 0 0' }}>OFFICIAL PERFORMANCE RECORD</p>
                     </div>

@@ -11,8 +11,8 @@ const Navbar = () => {
         {/* Left: Logos */}
         <div className="navbar-logos">
           <Link to="/">
-            <img src="/logo1.jpg" alt="Logo 1" className="nav-logo" onError={(e) => { e.target.style.display = 'none'; }} />
-            <img src="/logo2.png" alt="Logo 2" className="nav-logo" onError={(e) => { e.target.style.display = 'none'; }} />
+            <img src="/static/logo1.jpg" alt="Logo 1" className="nav-logo" onError={(e) => { e.target.style.display = 'none'; }} />
+            <img src="/static/logo2.png" alt="Logo 2" className="nav-logo" onError={(e) => { e.target.style.display = 'none'; }} />
             <span className="logo-text">CAMP 2026</span>
           </Link>
         </div>
