@@ -271,12 +271,11 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
 
         @media (max-width: 768px) {
           .hero-viewport {
-            height: 60vh;
-            min-height: 400px;
+            height: 45vh;
+            min-height: 300px;
           }
           .hero-background {
-            background-size: contain;
-            background-repeat: no-repeat;
+            background-size: cover;
             background-position: center;
           }
           .hero-content {
