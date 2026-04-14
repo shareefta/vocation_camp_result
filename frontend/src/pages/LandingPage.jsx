@@ -46,7 +46,7 @@ const LandingPage = () => {
               transition={{ duration: 1.5 }}
               className="hero-background"
               style={{ 
-                backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url(${heroes[currentIndex]?.image})` 
+                backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url(${heroes[currentIndex]?.image?.replace('http://', 'https://')})` 
               }}
             >
               <div className="hero-content">
