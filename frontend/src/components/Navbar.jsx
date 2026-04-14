@@ -19,7 +19,6 @@ const Navbar = () => {
 
         {/* Center: Links */}
         <div className="navbar-links">
-          <Link to="/" className="nav-link">Home</Link>
           <Link to="/results" className="nav-link">Result</Link>
         </div>
 
