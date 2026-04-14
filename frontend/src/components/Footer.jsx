@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Globe, MapPin, Heart } from 'lucide-react';
+import { Mail, Globe, MapPin } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -14,14 +14,10 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        
         <div className="footer-credit">
           <p>
             Developed by: <span className="dev-name">Webbyz Solutions</span>, Malappuram
           </p>
-          <div className="footer-sub">
-            Made with <Heart size={14} className="heart-icon" /> for Camp 2026 Learners
-          </div>
         </div>
       </div>
 
@@ -78,18 +74,6 @@ const Footer = () => {
           color: var(--primary);
           font-weight: 700;
         }
-        .footer-sub {
-          font-size: 0.85rem;
-          color: #999;
-          display: flex;
-          align-items: center;
-          justify-content: flex-end;
-          gap: 5px;
-        }
-        .heart-icon {
-          color: #e74c3c;
-          fill: #e74c3c;
-        }
 
         @media (max-width: 768px) {
           .footer-content {
@@ -100,9 +84,6 @@ const Footer = () => {
           }
           .footer-credit {
             text-align: center;
-          }
-          .footer-sub {
-            justify-content: center;
           }
           .footer-link-group {
             font-size: 1rem;
