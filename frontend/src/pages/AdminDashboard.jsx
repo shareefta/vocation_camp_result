@@ -2,9 +2,13 @@ import React, { useState, useEffect } from 'react';
 import api from '../api';
 import { 
   Users, Image as ImageIcon, Settings, LogOut, 
-  Plus, Upload, Trash2, Edit, Save, X, Download
+  Plus, Upload, Trash2, Edit, Save, X, Download,
+  Search as SearchIcon, FileText
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { jsPDF } from 'jspdf';
+import autoTable from 'jspdf-autotable';
+import { utils, writeFile } from 'xlsx';
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('students');
@@ -171,12 +175,56 @@ const StudentManager = ({ students, refresh }) => {
   
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
   const [formData, setFormData] = useState({
     reg_no: '',
     name: '',
     dob: '',
     result: 'Pass'
   });
+
+  // Filter students based on search query
+  const filteredStudents = students.filter(s => 
+    s.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    s.reg_no.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const handleExportPDF = () => {
+    const doc = new jsPDF();
+    doc.text("Student Records - Camp 2026", 14, 15);
+    
+    const tableColumn = ["Reg. No.", "Name", "Date of Birth", "Result"];
+    const tableRows = filteredStudents.map(s => [
+      s.reg_no,
+      s.name,
+      s.dob,
+      s.result === 'Pass' ? 'PASSED' : 'NEEDS IMPROVEMENT'
+    ]);
+
+    autoTable(doc, {
+      head: [tableColumn],
+      body: tableRows,
+      startY: 20,
+      theme: 'grid',
+      headStyles: { fillColor: [45, 90, 39] } // Custom primary color
+    });
+
+    doc.save(`Students_Report_${new Date().toISOString().slice(0, 10)}.pdf`);
+  };
+
+  const handleExportExcel = () => {
+    const data = filteredStudents.map(s => ({
+      "Registration Number": s.reg_no,
+      "Full Name": s.name,
+      "Date of Birth": s.dob,
+      "Result Status": s.result === 'Pass' ? 'PASSED' : 'NEEDS IMPROVEMENT'
+    }));
+
+    const worksheet = utils.json_to_sheet(data);
+    const workbook = utils.book_new();
+    utils.book_append_sheet(workbook, worksheet, "Students");
+    writeFile(workbook, `Students_Data_${new Date().toISOString().slice(0, 10)}.xlsx`);
+  };
 
   const handleImport = async (e) => {
     e.preventDefault();
@@ -240,14 +288,32 @@ const StudentManager = ({ students, refresh }) => {
 
   return (
     <div>
-      <div className="manager-header">
-        <h3>Student Records ({students.length})</h3>
-        <div className="actions">
+      <div className="manager-header" style={{ marginBottom: '20px', flexWrap: 'wrap', gap: '15px' }}>
+        <div style={{ flex: 1, minWidth: '300px' }}>
+          <h3>Student Records ({filteredStudents.length})</h3>
+          <div className="search-bar" style={{ position: 'relative', marginTop: '10px' }}>
+            <SearchIcon size={18} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#999' }} />
+            <input 
+               type="text" 
+               placeholder="Search by name or registration number..." 
+               value={searchQuery}
+               onChange={(e) => setSearchQuery(e.target.value)}
+               style={{ paddingLeft: '40px', width: '100%', borderRadius: '10px', fontSize: '0.9rem' }}
+            />
+          </div>
+        </div>
+        <div className="actions" style={{ marginLeft: 'auto' }}>
+          <button className="btn-secondary" onClick={handleExportExcel} title="Export Filtered List to Excel">
+            <Download size={18} /> Excel
+          </button>
+          <button className="btn-secondary" onClick={handleExportPDF} title="Export Filtered List to PDF">
+            <FileText size={18} /> PDF
+          </button>
           <button className="btn-secondary" onClick={() => { setShowImport(!showImport); setShowForm(false); }}>
-            <Upload size={18} /> Import Excel
+            <Upload size={18} /> Import
           </button>
           <button className="btn-primary" onClick={() => { setShowForm(true); setEditingId(null); setFormData({ reg_no: '', name: '', dob: '', result: 'Pass' }); setShowImport(false); }}>
-            <Plus size={18} /> Add Student
+            <Plus size={18} /> Add
           </button>
         </div>
       </div>
@@ -311,7 +377,7 @@ const StudentManager = ({ students, refresh }) => {
             </tr>
           </thead>
           <tbody>
-            {students.map(s => (
+            {filteredStudents.map(s => (
               <tr key={s.id}>
                 <td>{s.reg_no}</td>
                 <td>{s.name}</td>
