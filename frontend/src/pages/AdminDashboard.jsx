@@ -161,6 +161,9 @@ const AdminDashboard = () => {
         .badge { padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
         .badge-pass { background: #d4f8e3; color: #27ae60; }
         .badge-fail { background: #fdeaea; color: #e74c3c; }
+        .badge-pass-off { background: #e3f2fd; color: #1976d2; }
+        .badge-warning { background: #fff3e0; color: #f57c00; }
+        .badge-danger { background: #ffebee; color: #c62828; }
       `}</style>
     </div>
   );
@@ -351,8 +354,11 @@ const StudentManager = ({ students, refresh }) => {
             <div className="input-group">
                 <label>Result Status</label>
                 <select value={formData.result} onChange={(e) => setFormData({...formData, result: e.target.value})} style={{ padding: '12px', borderRadius: '12px', border: '1px solid #ddd' }}>
-                <option value="Pass">Pass</option>
-                <option value="Fail">Fail</option>
+                  <option value="Pass">Pass</option>
+                  <option value="Pass - off Campus">Pass - off Campus</option>
+                  <option value="Fail">Fail</option>
+                  <option value="Soft Fail">Soft Fail</option>
+                  <option value="Deep Fail">Deep Fail</option>
                 </select>
             </div>
             <div style={{ gridColumn: '1 / -1', display: 'flex', gap: '10px', marginTop: '10px' }}>
@@ -383,8 +389,14 @@ const StudentManager = ({ students, refresh }) => {
                 <td>{s.name}</td>
                 <td>{s.dob}</td>
                 <td>
-                  <span className={`badge ${s.result === 'Pass' ? 'badge-pass' : 'badge-fail'}`}>
-                    {s.result === 'Pass' ? 'PASSED' : 'NEEDS IMPROVEMENT'}
+                  <span className={`badge ${
+                    s.result === 'Pass' ? 'badge-pass' :
+                    s.result === 'Pass - off Campus' ? 'badge-pass-off' :
+                    s.result === 'Fail' ? 'badge-fail' :
+                    s.result === 'Soft Fail' ? 'badge-warning' :
+                    'badge-danger'
+                  }`}>
+                    {s.result.toUpperCase()}
                   </span>
                 </td>
                 <td>

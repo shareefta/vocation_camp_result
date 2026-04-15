@@ -27,12 +27,15 @@ class User(AbstractUser):
 class Student(models.Model):
     RESULT_CHOICES = [
         ('Pass', 'Pass'),
+        ('Pass - off Campus', 'Pass - off Campus'),
         ('Fail', 'Fail'),
+        ('Soft Fail', 'Soft Fail'),
+        ('Deep Fail', 'Deep Fail'),
     ]
     reg_no = models.CharField(max_length=50, unique=True)
     name = models.CharField(max_length=255)
     dob = models.DateField()
-    result = models.CharField(max_length=10, choices=RESULT_CHOICES)
+    result = models.CharField(max_length=30, choices=RESULT_CHOICES)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

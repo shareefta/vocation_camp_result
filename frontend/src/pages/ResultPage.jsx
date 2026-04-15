@@ -15,6 +15,49 @@ const ResultPage = () => {
   const [error, setError] = useState('');
   const resultRef = useRef(null);
 
+  const RESULT_CONFIG = {
+    'Pass': {
+      header: "PASSED",
+      color: "#27ae60",
+      bg: "#d4f8e3",
+      icon: <CheckCircle2 size={50} color="#27ae60" />,
+      message: <strong>20-04-2026 തിങ്കളാഴ്ചക്ക് മുമ്പായി അഡ്മിഷൻ എടുക്കുക</strong>,
+      footer: "അഡ്മിഷൻ വിവരങ്ങൾക്ക് 9744216001എന്ന നമ്പറിൽ വാട്സ്ആപ്പ് മെസ്സേജ് അയക്കുക."
+    },
+    'Pass - off Campus': {
+      header: "PASSED",
+      color: "#1976d2",
+      bg: "#e3f2fd",
+      icon: <CheckCircle2 size={50} color="#1976d2" />,
+      message: <strong>മസ്ദറിന്റെ ഓഫ് ക്യാമ്പസ്സായ മർകസുൽ ഉലൂം വിളത്തൂർ എന്ന സ്ഥാപനത്തിലേക്കാണ് അഡ്മിഷൻ ലഭിച്ചിട്ടുള്ളത്</strong>,
+      footer: "കൂടുതൽ വിവരങ്ങൾക്ക് 9744216001 എന്ന നമ്പറിൽ വാട്സ്ആപ്പ് മെസ്സേജ് അയക്കുക."
+    },
+    'Fail': {
+      header: "NEEDS IMPROVEMENT",
+      color: "#e74c3c",
+      bg: "#fdeaea",
+      icon: <XCircle size={50} color="#e74c3c" />,
+      message: "തോൽവി വിജയത്തിലേക്കുള്ള ആദ്യ ചവിട്ടുപടിയാണ്. ആത്മവിശ്വാസം കൈവിടാതെ പരിശ്രമിക്കുക.",
+      footer: ""
+    },
+    'Soft Fail': {
+      header: "FAILED",
+      color: "#f57c00",
+      bg: "#fff3e0",
+      icon: <XCircle size={50} color="#f57c00" />,
+      message: <strong>അഡ്മിഷൻ ലഭിച്ച 25 വിദ്യാർത്ഥികളിൽ ഉൾപ്പെട്ടിട്ടില്ല</strong>,
+      footer: "കഴിവുള്ള വിദ്യാർത്ഥിയാണ്, മസ്ദര് \"വേര് \"സമ്മർ ക്യാമ്പ് അനുഭവങ്ങൾ വരാനിരിക്കുന്ന വലിയ വിജയങ്ങളിലേക്ക് ഒരു ചവിട്ടുപടിയാവട്ടെ."
+    },
+    'Deep Fail': {
+      header: "FAILED",
+      color: "#c62828",
+      bg: "#ffebee",
+      icon: <XCircle size={50} color="#c62828" />,
+      message: <strong>വിദ്യാർത്ഥി മസ്ദറിൽ പഠിക്കാൻ താല്പര്യം ഇല്ലെന്ന് അറിയിച്ചു</strong>,
+      footer: ""
+    }
+  };
+
   const handleSearch = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -121,9 +164,9 @@ const ResultPage = () => {
                     <p style={{ color: '#666', fontSize: '1rem', fontWeight: '700', margin: '5px 0 0' }}>OFFICIAL PERFORMANCE RECORD</p>
                   </div>
 
-                  <div className={`result-display-card ${result.result.toLowerCase()}`} style={{ border: '2px solid #eee', borderRadius: '15px', padding: '20px', textAlign: 'center' }}>
+                  <div className={`result-display-card`} style={{ border: '2px solid #eee', borderRadius: '15px', padding: '20px', textAlign: 'center' }}>
                     <div className="result-icon">
-                      {result.result === 'Pass' ? <CheckCircle2 size={50} color="#27ae60" /> : <XCircle size={50} color="#e74c3c" />}
+                      {RESULT_CONFIG[result.result]?.icon || <Search size={50} />}
                     </div>
                     <div className="student-info" style={{ marginTop: '10px' }}>
                       <h3 style={{ fontSize: '1.6rem', margin: '0' }}>{result.name}</h3>
@@ -132,20 +175,18 @@ const ResultPage = () => {
                     <div className="result-badge-pdf" style={{
                       fontSize: '2rem', fontWeight: '900', display: 'inline-block',
                       padding: '5px 30px', borderRadius: '30px', margin: '15px 0',
-                      backgroundColor: result.result === 'Pass' ? '#d4f8e3' : '#fdeaea',
-                      color: result.result === 'Pass' ? '#27ae60' : '#e74c3c'
+                      backgroundColor: RESULT_CONFIG[result.result]?.bg || '#f0f0f0',
+                      color: RESULT_CONFIG[result.result]?.color || '#666'
                     }}>
-                      {result.result === 'Pass' ? 'PASSED' : 'NEEDS IMPROVEMENT'}
+                      {RESULT_CONFIG[result.result]?.header || 'RESULT'}
                     </div>
-                    <div className="result-notice" style={{ fontSize: '0.85rem', color: '#666', fontStyle: 'italic', maxWidth: '350px', margin: '0 auto', lineHeight: '1.4' }}>
-                      {result.result === 'Pass' ?
-                        <>
-                          Please contact the office for admission procedures. <br /> Contact No.: +91 786 786 3313 <br />
-                          <span style={{ fontStyle: 'normal', display: 'block', marginTop: '5px' }}>
-                            അഡ്മിഷൻ നടപടികൾക്കായി ഓഫീസുമായി ബന്ധപ്പെടുക. <br /> ഫോൺ: +91 786 786 3313
-                          </span>
-                        </> :
-                        "Every expert was once a beginner. Don't let this result define your future—your hard work will eventually pay off!"}
+                    <div className="result-notice" style={{ fontSize: '1rem', color: '#333', maxWidth: '450px', margin: '0 auto', lineHeight: '1.6' }}>
+                       <div style={{ marginBottom: '10px' }}>
+                          {RESULT_CONFIG[result.result]?.message}
+                       </div>
+                       <div style={{ fontSize: '0.9rem', color: '#666' }}>
+                          {RESULT_CONFIG[result.result]?.footer}
+                       </div>
                     </div>
                     <div className="print-footer" style={{ marginTop: '30px', borderTop: '1px solid #eee', paddingTop: '10px', fontSize: '0.7rem', color: '#999' }}>
                       Certificate issued on {new Date().toLocaleDateString()} • Camp Authority
