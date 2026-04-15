@@ -29,7 +29,7 @@ const ResultPage = () => {
       color: "#1976d2",
       bg: "#e3f2fd",
       icon: <CheckCircle2 size={50} color="#1976d2" />,
-      message: <strong>മസ്ദറിന്റെ ഓഫ് ക്യാമ്പസ്സായ മർകസുൽ ഉലൂം വിളത്തൂർ എന്ന സ്ഥാപനത്തിലേക്കാണ് അഡ്മിഷൻ ലഭിച്ചിട്ടുള്ളത്</strong>,
+      message: <strong>മസ്ദറിൻ്റെ ഓഫ് ക്യാമ്പസ്സായ മർകസുൽ ഉലൂം വിളത്തൂർ എന്ന സ്ഥാപനത്തിലേക്കാണ് അഡ്മിഷൻ ലഭിച്ചിട്ടുള്ളത്</strong>,
       footer: "കൂടുതൽ വിവരങ്ങൾക്ക് 9744216001 എന്ന നമ്പറിൽ വാട്സ്ആപ്പ് മെസ്സേജ് അയക്കുക."
     },
     'Fail': {
@@ -46,7 +46,7 @@ const ResultPage = () => {
       bg: "#fff3e0",
       icon: <XCircle size={50} color="#f57c00" />,
       message: <strong>അഡ്മിഷൻ ലഭിച്ച 25 വിദ്യാർത്ഥികളിൽ ഉൾപ്പെട്ടിട്ടില്ല</strong>,
-      footer: "കഴിവുള്ള വിദ്യാർത്ഥിയാണ്, മസ്ദര് \"വേര് \"സമ്മർ ക്യാമ്പ് അനുഭവങ്ങൾ വരാനിരിക്കുന്ന വലിയ വിജയങ്ങളിലേക്ക് ഒരു ചവിട്ടുപടിയാവട്ടെ."
+      footer: "കഴിവുള്ള വിദ്യാർത്ഥിയാണ്, മസ്ദർ \"വേര് \"സമ്മർ ക്യാമ്പ് അനുഭവങ്ങൾ വരാനിരിക്കുന്ന വലിയ വിജയങ്ങളിലേക്ക് ഒരു ചവിട്ടുപടിയാവട്ടെ."
     },
     'Deep Fail': {
       header: "FAILED",
@@ -181,12 +181,12 @@ const ResultPage = () => {
                       {RESULT_CONFIG[result.result]?.header || 'RESULT'}
                     </div>
                     <div className="result-notice" style={{ fontSize: '1rem', color: '#333', maxWidth: '450px', margin: '0 auto', lineHeight: '1.6' }}>
-                       <div style={{ marginBottom: '10px' }}>
-                          {RESULT_CONFIG[result.result]?.message}
-                       </div>
-                       <div style={{ fontSize: '0.9rem', color: '#666' }}>
-                          {RESULT_CONFIG[result.result]?.footer}
-                       </div>
+                      <div style={{ marginBottom: '10px' }}>
+                        {RESULT_CONFIG[result.result]?.message}
+                      </div>
+                      <div style={{ fontSize: '0.9rem', color: '#666' }}>
+                        {RESULT_CONFIG[result.result]?.footer}
+                      </div>
                     </div>
                     <div className="print-footer" style={{ marginTop: '30px', borderTop: '1px solid #eee', paddingTop: '10px', fontSize: '0.7rem', color: '#999' }}>
                       Certificate issued on {new Date().toLocaleDateString()} • Camp Authority
@@ -212,7 +212,7 @@ const ResultPage = () => {
           {error && <div className="message error animate-fade-in"><XCircle size={18} /> {error}</div>}
         </motion.div>
       </main>
-      
+
       <Footer />
 
       <style>{`
