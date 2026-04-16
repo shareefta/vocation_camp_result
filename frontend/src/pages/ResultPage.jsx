@@ -235,7 +235,7 @@ const ResultPage = () => {
         .page-wrapper {
           min-height: 100vh;
           background: linear-gradient(180deg, #fdfbf7 0%, #f4f7f2 100%);
-          padding-top: 100px;
+          padding-top: 120px;
           padding-bottom: 40px;
         }
         .result-container { display: flex; justify-content: center; }

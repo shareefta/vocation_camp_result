@@ -7,7 +7,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <nav className="navbar glass">
+    <nav className="navbar shadow-soft">
       <div className="navbar-container container">
         {/* Left: Logo */}
         <div className="navbar-logos">
@@ -40,13 +40,14 @@ const Navbar = () => {
           top: 0;
           left: 0;
           width: 100%;
-          height: 80px;
+          height: 100px;
           z-index: 1000;
           display: flex;
           align-items: center;
-          background: var(--primary); /* Solid color for brand presence */
-          box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+          background: #ffffff;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.05);
           transition: var(--transition);
+          border-bottom: 1px solid #f0f0f0;
         }
         .navbar-container {
           display: flex;
@@ -65,7 +66,7 @@ const Navbar = () => {
           gap: 10px;
         }
         .nav-logo {
-          height: 60px;
+          height: 80px;
           width: auto;
           object-fit: contain;
         }
@@ -84,10 +85,11 @@ const Navbar = () => {
         }
         .nav-link {
           font-weight: 600;
-          color: rgba(255,255,255,0.9);
+          color: var(--primary);
           font-size: 1.05rem;
           position: relative;
           padding: 5px 0;
+          opacity: 0.9;
         }
         .nav-link::after {
           content: '';
@@ -106,13 +108,12 @@ const Navbar = () => {
           width: 100%;
         }
         .result-nav-btn {
-          background: rgba(255, 255, 255, 0.15);
-          backdrop-filter: blur(5px);
+          background: #ffffff;
           border: 2px solid var(--accent);
           padding: 8px 25px !important;
           border-radius: 30px;
-          color: white !important;
-          box-shadow: 0 0 15px rgba(241, 196, 15, 0.3);
+          color: var(--primary) !important;
+          box-shadow: 0 4px 12px rgba(241, 196, 15, 0.2);
           transition: all 0.3s ease;
         }
         .result-nav-btn:hover {
