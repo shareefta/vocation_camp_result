@@ -31,14 +31,14 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
           top: 0;
           left: 0;
           width: 100%;
-          height: 100px;
+          height: 85px;
           z-index: 1000;
           display: flex;
           align-items: center;
-          background: #ffffff;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+          background: #f4f8f4; /* Soft mint background */
+          box-shadow: 0 4px 15px rgba(0,0,0,0.06);
           transition: var(--transition);
-          border-bottom: 1px solid #f0f0f0;
+          border-bottom: 1px solid #e0eee0;
         }
         .navbar-container {
           display: flex;
@@ -57,9 +57,14 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
           gap: 10px;
         }
         .nav-logo {
-          height: 80px;
+          height: 100px; /* Larger than navbar to create a modern offset look */
           width: auto;
           object-fit: contain;
+          padding: 5px;
+          background: white;
+          border-radius: 12px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+          transform: translateY(10px); /* Centers it and makes it pop */
         }
         .logo-text {
           font-weight: 800;
@@ -207,8 +212,8 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
         }
       `})]}),n_=()=>{let[e,t]=(0,m.useState)([]),[n,r]=(0,m.useState)(0),i=Xe();return(0,m.useEffect)(()=>{(async()=>{try{t((await Aa.get(`hero-images/`)).data)}catch{console.error(`Failed to fetch hero images`)}})()},[]),(0,m.useEffect)(()=>{if(e.length>1){let t=setInterval(()=>{r(t=>(t+1)%e.length)},6e3);return()=>clearInterval(t)}},[e]),(0,J.jsxs)(`div`,{className:`landing-wrapper`,children:[(0,J.jsx)(e_,{}),(0,J.jsxs)(`section`,{className:`hero-viewport`,children:[(0,J.jsx)(rh,{mode:`wait`,children:e.length>0?(0,J.jsx)($g.div,{initial:{opacity:0,scale:1.1},animate:{opacity:1,scale:1},exit:{opacity:0},transition:{duration:1.5},className:`hero-background`,style:{backgroundImage:`linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url(${e[n]?.image?.replace(`http://`,`https://`)})`},children:(0,J.jsxs)(`div`,{className:`hero-content`,children:[(0,J.jsx)($g.h1,{initial:{y:30,opacity:0},animate:{y:0,opacity:1},transition:{delay:.5},children:e[n]?.title||`Camp 2026`}),(0,J.jsx)($g.p,{initial:{y:30,opacity:0},animate:{y:0,opacity:1},transition:{delay:.7},children:e[n]?.subtitle||`Unlock your potential at the Vocational Training Camp.`}),(0,J.jsx)($g.div,{initial:{y:30,opacity:0},animate:{y:0,opacity:1},transition:{delay:.9},className:`hero-buttons`,children:(0,J.jsx)(`button`,{onClick:()=>i(`/results`),className:`btn-secondary pulse`,children:`View My Result`})})]})},n):(0,J.jsx)(`div`,{className:`hero-background default-bg`,style:{background:`var(--primary)`},children:(0,J.jsxs)(`div`,{className:`hero-content`,children:[(0,J.jsx)(`h1`,{children:`Welcome to Camp 2026`}),(0,J.jsx)(`p`,{children:`Check your results using the link in the navbar.`})]})})}),e.length>1&&(0,J.jsx)(`div`,{className:`slider-dots`,children:e.map((e,t)=>(0,J.jsx)(`div`,{className:`dot ${t===n?`active`:``}`,onClick:()=>r(t)},t))})]}),(0,J.jsx)(`section`,{className:`welcome-section container`,children:(0,J.jsx)(`div`,{className:`welcome-content`,children:(0,J.jsxs)(`div`,{className:`welcome-text`,children:[(0,J.jsx)(`h2`,{children:`Welcome to Camp 2026`}),(0,J.jsx)(`p`,{children:`Our vocational training camp offers a unique blend of formal training and outdoor activities. We believe in learning by doing, and our stunning location provides the perfect backdrop for personal growth.`}),(0,J.jsxs)(`ul`,{className:`camp-features`,children:[(0,J.jsx)(`li`,{children:`✓ Professional Mentors`}),(0,J.jsx)(`li`,{children:`✓ Nature Immersion`}),(0,J.jsx)(`li`,{children:`✓ Advanced Skilling`}),(0,J.jsx)(`li`,{children:`✓ Verified Certification`})]})]})})}),(0,J.jsx)(t_,{}),(0,J.jsx)(`style`,{children:`
         .hero-viewport {
-          height: calc(100vh - 100px);
-          margin-top: 100px;
+          height: calc(100vh - 85px);
+          margin-top: 85px;
           width: 100%;
           position: relative;
           overflow: hidden;
@@ -647,7 +652,7 @@ end`};t.events.push([`putFont`,function(t){(function(t){var n=t.font,i=t.out,a=t
         .page-wrapper {
           min-height: 100vh;
           background: linear-gradient(180deg, #fdfbf7 0%, #f4f7f2 100%);
-          padding-top: 120px;
+          padding-top: 110px;
           padding-bottom: 40px;
         }
         .result-container { display: flex; justify-content: center; }

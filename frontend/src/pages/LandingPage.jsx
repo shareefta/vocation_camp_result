@@ -120,8 +120,8 @@ const LandingPage = () => {
 
       <style>{`
         .hero-viewport {
-          height: calc(100vh - 100px);
-          margin-top: 100px;
+          height: calc(100vh - 85px);
+          margin-top: 85px;
           width: 100%;
           position: relative;
           overflow: hidden;

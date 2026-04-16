@@ -40,14 +40,14 @@ const Navbar = () => {
           top: 0;
           left: 0;
           width: 100%;
-          height: 100px;
+          height: 85px;
           z-index: 1000;
           display: flex;
           align-items: center;
-          background: #ffffff;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+          background: #f4f8f4; /* Soft mint background */
+          box-shadow: 0 4px 15px rgba(0,0,0,0.06);
           transition: var(--transition);
-          border-bottom: 1px solid #f0f0f0;
+          border-bottom: 1px solid #e0eee0;
         }
         .navbar-container {
           display: flex;
@@ -66,9 +66,14 @@ const Navbar = () => {
           gap: 10px;
         }
         .nav-logo {
-          height: 80px;
+          height: 100px; /* Larger than navbar to create a modern offset look */
           width: auto;
           object-fit: contain;
+          padding: 5px;
+          background: white;
+          border-radius: 12px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+          transform: translateY(10px); /* Centers it and makes it pop */
         }
         .logo-text {
           font-weight: 800;
