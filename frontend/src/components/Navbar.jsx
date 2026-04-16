@@ -40,14 +40,14 @@ const Navbar = () => {
           top: 0;
           left: 0;
           width: 100%;
-          height: 85px;
+          height: 115px;
           z-index: 1000;
           display: flex;
           align-items: center;
-          background: #f4f8f4; /* Soft mint background */
-          box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+          background: #fafafa; /* Premium Ivory background */
+          box-shadow: 0 4px 15px rgba(0,0,0,0.04);
           transition: var(--transition);
-          border-bottom: 1px solid #e0eee0;
+          border-bottom: 1px solid #eeeeee;
         }
         .navbar-container {
           display: flex;
@@ -66,7 +66,7 @@ const Navbar = () => {
           gap: 10px;
         }
         .nav-logo {
-          height: 75px; 
+          height: 100px; 
           width: auto;
           object-fit: contain;
         }
@@ -81,7 +81,7 @@ const Navbar = () => {
           left: 50%;
           transform: translateX(-50%);
           display: flex;
-          gap: 40px;
+          gap: 60px;
         }
         .nav-link {
           font-weight: 600;

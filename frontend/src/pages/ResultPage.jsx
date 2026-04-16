@@ -157,8 +157,8 @@ const ResultPage = () => {
                 {/* This div is what gets captured for PDF */}
                 <div className="result-display-printable" ref={resultRef} style={{ background: 'white', padding: '20px' }}>
                   <div className="printable-header" style={{ textAlign: 'center', marginBottom: '20px' }}>
-                    <div className="header-logos" style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}>
-                      <img src="/static/logo.png" alt="" style={{ height: '80px', width: 'auto', objectFit: 'contain' }} />
+                    <div className="header-logos" style={{ display: 'flex', justifyContent: 'center', marginBottom: '15px' }}>
+                      <img src="/static/logo.png" alt="" style={{ height: '120px', width: 'auto', objectFit: 'contain' }} />
                     </div>
                     <p style={{ color: '#666', fontSize: '1rem', fontWeight: '700', margin: '5px 0 0' }}>OFFICIAL PERFORMANCE RECORD</p>
                   </div>
@@ -235,7 +235,7 @@ const ResultPage = () => {
         .page-wrapper {
           min-height: 100vh;
           background: linear-gradient(180deg, #fdfbf7 0%, #f4f7f2 100%);
-          padding-top: 110px;
+          padding-top: 135px;
           padding-bottom: 40px;
         }
         .result-container { display: flex; justify-content: center; }
