@@ -57,14 +57,9 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
           gap: 10px;
         }
         .nav-logo {
-          height: 100px; /* Larger than navbar to create a modern offset look */
+          height: 75px; 
           width: auto;
           object-fit: contain;
-          padding: 5px;
-          background: white;
-          border-radius: 12px;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-          transform: translateY(10px); /* Centers it and makes it pop */
         }
         .logo-text {
           font-weight: 800;
