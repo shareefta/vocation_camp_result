@@ -20,10 +20,10 @@ const Navbar = () => {
         {/* Center: Links */}
         <div className="navbar-links">
           <motion.div
-            animate={{ opacity: [1, 0.5, 1] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            animate={{ opacity: [1, 0.7, 1], scale: [1, 1.05, 1] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           >
-            <Link to="/results" className="nav-link">Result</Link>
+            <Link to="/results" className="nav-link result-nav-btn">Result</Link>
           </motion.div>
         </div>
 
@@ -106,6 +106,25 @@ const Navbar = () => {
         }
         .nav-link:hover::after {
           width: 100%;
+        }
+        .result-nav-btn {
+          background: rgba(255, 255, 255, 0.15);
+          backdrop-filter: blur(5px);
+          border: 2px solid var(--accent);
+          padding: 8px 25px !important;
+          border-radius: 30px;
+          color: white !important;
+          box-shadow: 0 0 15px rgba(241, 196, 15, 0.3);
+          transition: all 0.3s ease;
+        }
+        .result-nav-btn:hover {
+          background: var(--accent);
+          color: var(--primary) !important;
+          box-shadow: 0 0 25px rgba(241, 196, 15, 0.6);
+          transform: translateY(-2px);
+        }
+        .result-nav-btn::after {
+          display: none;
         }
         .btn-login {
           background: var(--secondary); /* Contrast button */

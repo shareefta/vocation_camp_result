@@ -29,7 +29,7 @@ const ResultPage = () => {
       color: "#1976d2",
       bg: "#e3f2fd",
       icon: <CheckCircle2 size={50} color="#1976d2" />,
-      message: <strong>മസ്ദറിൻ്റെ ഓഫ് ക്യാമ്പസ്സായ മർകസുൽ ഉലൂം വിളത്തൂർ എന്ന സ്ഥാപനത്തിലേക്കാണ് അഡ്മിഷൻ ലഭിച്ചിട്ടുള്ളത്</strong>,
+      message: <strong>മസ്‌‌ദറിൻ്റെ ഓഫ് ക്യാമ്പസ്സായ മർകസുൽ ഉലൂം വിളത്തൂർ എന്ന സ്ഥാപനത്തിലേക്കാണ് അഡ്മിഷൻ ലഭിച്ചിട്ടുള്ളത്</strong>,
       footer: "കൂടുതൽ വിവരങ്ങൾക്ക് 9744216001 എന്ന നമ്പറിൽ വാട്സ്ആപ്പ് മെസ്സേജ് അയക്കുക."
     },
     'Fail': {
@@ -46,14 +46,14 @@ const ResultPage = () => {
       bg: "#fff3e0",
       icon: <XCircle size={50} color="#f57c00" />,
       message: <strong>അഡ്മിഷൻ ലഭിച്ച 25 വിദ്യാർത്ഥികളിൽ ഉൾപ്പെട്ടിട്ടില്ല</strong>,
-      footer: "കഴിവുള്ള വിദ്യാർത്ഥിയാണ്, മസ്ദർ \"വേര് \"സമ്മർ ക്യാമ്പ് അനുഭവങ്ങൾ വരാനിരിക്കുന്ന വലിയ വിജയങ്ങളിലേക്ക് ഒരു ചവിട്ടുപടിയാവട്ടെ."
+      footer: "കഴിവുള്ള വിദ്യാർത്ഥിയാണ്, മസ്‌‌ദർ \"വേര് \"സമ്മർ ക്യാമ്പ് അനുഭവങ്ങൾ വരാനിരിക്കുന്ന വലിയ വിജയങ്ങളിലേക്ക് ഒരു ചവിട്ടുപടിയാവട്ടെ."
     },
     'Deep Fail': {
       header: "FAILED",
       color: "#c62828",
       bg: "#ffebee",
       icon: <XCircle size={50} color="#c62828" />,
-      message: <strong>വിദ്യാർത്ഥി മസ്ദറിൽ പഠിക്കാൻ താല്പര്യം ഇല്ലെന്ന് അറിയിച്ചു</strong>,
+      message: <strong>വിദ്യാർത്ഥി മസ്‌‌ദറിൽ പഠിക്കാൻ താല്പര്യം ഇല്ലെന്ന് അറിയിച്ചു</strong>,
       footer: ""
     }
   };
@@ -172,9 +172,9 @@ const ResultPage = () => {
                       <h3 style={{ fontSize: '1.6rem', margin: '0' }}>{result.name}</h3>
                       <p className="reg-val">Reg No: {result.reg_no}</p>
                     </div>
-                    <motion.div 
-                      className="result-badge-pdf" 
-                      animate={{ 
+                    <motion.div
+                      className="result-badge-pdf"
+                      animate={{
                         opacity: [1, 0.8, 1],
                         scale: [1, 1.05, 1],
                         boxShadow: [
@@ -183,7 +183,7 @@ const ResultPage = () => {
                           `0 0 0px ${RESULT_CONFIG[result.result]?.color}00`
                         ]
                       }}
-                      transition={{ 
+                      transition={{
                         duration: 2,
                         repeat: Infinity,
                         ease: "easeInOut"
