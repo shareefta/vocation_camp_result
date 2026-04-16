@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { LogIn } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -18,7 +19,12 @@ const Navbar = () => {
 
         {/* Center: Links */}
         <div className="navbar-links">
-          <Link to="/results" className="nav-link">Result</Link>
+          <motion.div
+            animate={{ opacity: [1, 0.5, 1] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <Link to="/results" className="nav-link">Result</Link>
+          </motion.div>
         </div>
 
         {/* Right: Login Button */}
@@ -119,8 +125,7 @@ const Navbar = () => {
         }
         @media (max-width: 768px) {
           .navbar-links { position: static; transform: none; gap: 15px; }
-          .login-text { display: none; }
-          .btn-login { padding: 10px; border-radius: 50%; width: 40px; height: 40px; justify-content: center; }
+          .navbar-actions { display: none; }
         }
       `}</style>
     </nav>

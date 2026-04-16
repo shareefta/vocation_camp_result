@@ -33,11 +33,11 @@ const ResultPage = () => {
       footer: "കൂടുതൽ വിവരങ്ങൾക്ക് 9744216001 എന്ന നമ്പറിൽ വാട്സ്ആപ്പ് മെസ്സേജ് അയക്കുക."
     },
     'Fail': {
-      header: "NEEDS IMPROVEMENT",
+      header: "FAILED",
       color: "#e74c3c",
       bg: "#fdeaea",
       icon: <XCircle size={50} color="#e74c3c" />,
-      message: "തോൽവി വിജയത്തിലേക്കുള്ള ആദ്യ ചവിട്ടുപടിയാണ്. ആത്മവിശ്വാസം കൈവിടാതെ പരിശ്രമിക്കുക.",
+      message: "തോൽവി വിജയത്തിലേക്കുള്ള ചവിട്ടുപടിയാണ്. ആത്മവിശ്വാസം കൈവിടാതെ പരിശ്രമിക്കുക.",
       footer: ""
     },
     'Soft Fail': {
@@ -172,24 +172,41 @@ const ResultPage = () => {
                       <h3 style={{ fontSize: '1.6rem', margin: '0' }}>{result.name}</h3>
                       <p className="reg-val">Reg No: {result.reg_no}</p>
                     </div>
-                    <div className="result-badge-pdf" style={{
-                      fontSize: '2rem', fontWeight: '900', display: 'inline-block',
-                      padding: '5px 30px', borderRadius: '30px', margin: '15px 0',
-                      backgroundColor: RESULT_CONFIG[result.result]?.bg || '#f0f0f0',
-                      color: RESULT_CONFIG[result.result]?.color || '#666'
-                    }}>
+                    <motion.div 
+                      className="result-badge-pdf" 
+                      animate={{ 
+                        opacity: [1, 0.8, 1],
+                        scale: [1, 1.05, 1],
+                        boxShadow: [
+                          `0 0 0px ${RESULT_CONFIG[result.result]?.color}00`,
+                          `0 0 20px ${RESULT_CONFIG[result.result]?.color}44`,
+                          `0 0 0px ${RESULT_CONFIG[result.result]?.color}00`
+                        ]
+                      }}
+                      transition={{ 
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                      style={{
+                        fontSize: '2rem', fontWeight: '900', display: 'inline-block',
+                        padding: '5px 40px', borderRadius: '40px', margin: '15px 0',
+                        backgroundColor: RESULT_CONFIG[result.result]?.bg || '#f0f0f0',
+                        color: RESULT_CONFIG[result.result]?.color || '#666',
+                        border: `2px solid ${RESULT_CONFIG[result.result]?.color}22`
+                      }}>
                       {RESULT_CONFIG[result.result]?.header || 'RESULT'}
-                    </div>
+                    </motion.div>
                     <div className="result-notice" style={{ fontSize: '1rem', color: '#333', maxWidth: '450px', margin: '0 auto', lineHeight: '1.6' }}>
                       <div style={{ marginBottom: '10px' }}>
                         {RESULT_CONFIG[result.result]?.message}
                       </div>
-                      <div style={{ fontSize: '0.9rem', color: '#666' }}>
+                      <div style={{ fontSize: '0.9rem', color: '#666', fontWeight: '700' }}>
                         {RESULT_CONFIG[result.result]?.footer}
                       </div>
                     </div>
                     <div className="print-footer" style={{ marginTop: '30px', borderTop: '1px solid #eee', paddingTop: '10px', fontSize: '0.7rem', color: '#999' }}>
-                      Certificate issued on {new Date().toLocaleDateString()} • Camp Authority
+                      Certificate issued on {new Date().toLocaleDateString('en-GB')} • Camp Authority
                     </div>
                   </div>
                 </div>
