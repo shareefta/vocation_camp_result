@@ -9,11 +9,10 @@ const Navbar = () => {
   return (
     <nav className="navbar glass">
       <div className="navbar-container container">
-        {/* Left: Logos */}
+        {/* Left: Logo */}
         <div className="navbar-logos">
           <Link to="/">
-            {/* <img src="/static/logo1.jpg" alt="Logo 1" className="nav-logo" onError={(e) => { e.target.style.display = 'none'; }} /> */}
-            <img src="/static/logo.png" alt="Logo 2" className="nav-logo" onError={(e) => { e.target.style.display = 'none'; }} />
+            <img src="/logo.png" alt="Logo" className="nav-logo" />
           </Link>
         </div>
 
@@ -66,10 +65,9 @@ const Navbar = () => {
           gap: 10px;
         }
         .nav-logo {
-          height: 45px;
+          height: 60px;
           width: auto;
           object-fit: contain;
-          border-radius: 4px;
         }
         .logo-text {
           font-weight: 800;
