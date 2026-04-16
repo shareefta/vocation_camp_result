@@ -40,7 +40,7 @@ const Navbar = () => {
           top: 0;
           left: 0;
           width: 100%;
-          height: 115px;
+          height: 90px;
           z-index: 1000;
           display: flex;
           align-items: center;
@@ -66,9 +66,11 @@ const Navbar = () => {
           gap: 10px;
         }
         .nav-logo {
-          height: 100px; 
+          height: 140px; 
           width: auto;
           object-fit: contain;
+          transform: translateY(10px); /* Allow logo to slightly overhang for impact */
+          filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
         }
         .logo-text {
           font-weight: 800;
@@ -82,6 +84,14 @@ const Navbar = () => {
           transform: translateX(-50%);
           display: flex;
           gap: 60px;
+        }
+        .hero-viewport {
+          height: calc(100vh - 90px);
+          margin-top: 90px;
+          width: 100%;
+          position: relative;
+          overflow: hidden;
+          background: #000;
         }
         .nav-link {
           font-weight: 600;
