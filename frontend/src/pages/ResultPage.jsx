@@ -21,7 +21,7 @@ const ResultPage = () => {
       color: "#27ae60",
       bg: "#d4f8e3",
       icon: <CheckCircle2 size={50} color="#27ae60" />,
-      message: <strong>20-04-2026 തിങ്കളാഴ്ചക്ക് മുമ്പായി അഡ്മിഷൻ എടുക്കുക</strong>,
+      message: <strong>16-05-2026 ശനിയാഴ്ചക്ക് മുമ്പായി അഡ്മിഷൻ എടുക്കുക</strong>,
       footer: "അഡ്മിഷൻ വിവരങ്ങൾക്ക് 9744216001എന്ന നമ്പറിൽ വാട്സ്ആപ്പ് മെസ്സേജ് അയക്കുക."
     },
     'Pass - off Campus': {
